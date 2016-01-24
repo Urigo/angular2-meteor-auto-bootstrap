@@ -17,6 +17,5 @@ export const METEOR_PROVIDERS = meteorProviders();
 
 export function bootstrap(appComponentType:any,
                           providers:Array<Type | Provider | any[]> = null) {
-    //return ng2Bootstrap(appComponentType, [].concat(METEOR_PROVIDERS, providers || []));
-    ng2Bootstrap(appComponentType);
+    ng2Bootstrap(appComponentType, [].concat(METEOR_PROVIDERS, providers || []));
 }
