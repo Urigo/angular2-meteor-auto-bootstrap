@@ -16,7 +16,6 @@
     "typescript": "^1.7.5"
   },
   "peerDependencies": {
-    "angular2-meteor": "*",
     "angular2": "^2.0.0-beta.1",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
@@ -25,7 +24,6 @@
     "zone.js": "^0.5.10"
   },
   "devDependencies": {
-    "angular2-meteor": "*",
     "angular2": "^2.0.0-beta.1",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
