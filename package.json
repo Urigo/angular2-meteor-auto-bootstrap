@@ -4,7 +4,7 @@
   "author": "Dotan Simha <dotansimha@gmail.com> (http://github.com/dotansimha/)",
   "license": "ISC",
   "scripts": {
-    "postinstall": "tsc bootstrap.ts --emitDecoratorMetadata --experimentalDecorators --module commonjs --moduleResolution node --declaration --target ES5"
+    "postinstall": "gulp build"
   },
   "dependencies": {
     "gulp": "^3.9.0",
