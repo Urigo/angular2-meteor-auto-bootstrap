@@ -4,7 +4,7 @@
   "author": "Dotan Simha <dotansimha@gmail.com> (http://github.com/dotansimha/)",
   "license": "ISC",
   "scripts": {
-    "build": "tsc bootstrap.ts --emitDecoratorMetadata --experimentalDecorators --module commonjs --moduleResolution node --declaration --target ES5"
+    "postinstall": "tsc bootstrap.ts --emitDecoratorMetadata --experimentalDecorators --module commonjs --moduleResolution node --declaration --target ES5"
   },
   "dependencies": {
     "tsd": "^0.6.5",

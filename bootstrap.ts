@@ -1,13 +1,17 @@
-import 'reflect-metadata';
 import {provide, Type, Provider, IterableDiffers} from 'angular2/core';
 import {MongoCursorDifferFactory} from 'angular2-meteor/mongo_cursor_differ';
 import {bootstrap as ng2Bootstrap} from 'angular2/bootstrap';
+import {defaultIterableDiffers} from 'angular2/src/core/change_detection/change_detection';
 
 function meteorProviders():Array {
     let providers = [];
 
+    let factories = defaultIterableDiffers.factories;
+    if (factories) {
+        factories.push(new MongoCursorDifferFactory());
+    }
     providers.push(provide(IterableDiffers, {
-        useValue: IterableDiffers.extend([new MongoCursorDifferFactory()])
+        useValue: new IterableDiffers(factories)
     }));
 
     return providers;
