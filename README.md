@@ -46,3 +46,5 @@ export class Main { }
 
 bootstrap(Main);
 ````
+
+For more examples and working code, please refer to the `/examples/` folder in this repo.
