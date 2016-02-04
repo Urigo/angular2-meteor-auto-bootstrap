@@ -2,3 +2,4 @@ node_modules
 /*.js
 /*.ts
 npm-debug.log
+!webpack.config.js
