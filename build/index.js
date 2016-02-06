@@ -73,7 +73,9 @@
 	// Bootstrap with Meteor providers.
 	function bootstrap(appComponentType, providers) {
 	    if (providers === void 0) { providers = null; }
-	    bootstrap_1.bootstrap(appComponentType, [].concat(exports.METEOR_PROVIDERS, providers || []));
+	    Meteor.startup(function () {
+	        bootstrap_1.bootstrap(appComponentType, [].concat(exports.METEOR_PROVIDERS, providers || []));
+	    });
 	}
 	exports.bootstrap = bootstrap;
 	function MeteorApp(args) {

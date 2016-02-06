@@ -22,7 +22,9 @@ export const METEOR_PROVIDERS = meteorProviders();
 // Bootstrap with Meteor providers.
 export function bootstrap(appComponentType: any,
                           providers: Array<Type | Provider | any[]> = null) {
-    ng2Bootstrap(appComponentType, [].concat(METEOR_PROVIDERS, providers || []));
+    Meteor.startup(function() {
+        ng2Bootstrap(appComponentType, [].concat(METEOR_PROVIDERS, providers || []));
+    });
 }
 
 export function MeteorApp(args: any={}) {
