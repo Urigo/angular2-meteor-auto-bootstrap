@@ -1,6 +1,6 @@
 import {provide, Type, Provider, IterableDiffers, Component} from 'angular2/core';
 import {MongoCursorDifferFactory} from 'angular2-meteor/mongo_cursor_differ';
-import {bootstrap as ng2Bootstrap} from 'angular2/bootstrap';
+import {bootstrap as ng2Bootstrap} from 'angular2/platform/browser';
 import {defaultIterableDiffers} from 'angular2/src/core/change_detection/change_detection';
 
 function meteorProviders() {
