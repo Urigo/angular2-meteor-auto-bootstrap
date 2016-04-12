@@ -4,6 +4,7 @@
   "author": "Dotan Simha <dotansimha@gmail.com> (http://github.com/dotansimha/)",
   "license": "MIT",
   "main": "src/index.js",
+  "typings": "src/index.d.ts",
   "scripts": {
     "build": "gulp build"
   },
