@@ -13,8 +13,14 @@
   "filesGlob": [
     "modules/**/*.ts"
   ],
-  "typings": [
-    "typings/angular2-meteor.d.ts",
-    "typings/meteor/meteor.d.ts"
+  "files": [
+    "modules/bootstrap.ts",
+    "modules/index.ts",
+    "typings/main.d.ts"
+  ],
+  "exclude": [
+    "examples",
+    "node_modules",
+    "atmosphere-packages"
   ]
 }
