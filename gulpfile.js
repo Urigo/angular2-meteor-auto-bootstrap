@@ -17,14 +17,14 @@ gulp.task("typings",function(){
 gulp.task("webpack", function(callback) {
   var build = gulp.src("modules/*")
     .pipe(webpack(require("./webpack.config.js")))
-    .pipe(gulp.dest("src/"));
+    .pipe(gulp.dest("build/"));
 
   return build;
 });
 
 gulp.task("movedts", function(callback) {
   var move = gulp.src("modules/*.d.ts")
-    .pipe(gulp.dest("src/"));
+    .pipe(gulp.dest("build/"));
 
   return move;
 });
@@ -39,7 +39,7 @@ gulp.task("build-clean", function() {
 });
 
 gulp.task("git-add", function(){
-  return gulp.src("src/*")
+  return gulp.src("build/*")
     .pipe(git.add());
 });
 

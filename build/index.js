@@ -59,12 +59,16 @@
 	var core_1 = __webpack_require__(2);
 	var browser_1 = __webpack_require__(3);
 	var angular2_meteor_1 = __webpack_require__(4);
+	var promise_1 = __webpack_require__(5);
 	// Bootstrap with Meteor providers.
 	function bootstrap(appComponentType, providers) {
 	    if (providers === void 0) { providers = null; }
+	    var completer = promise_1.PromiseWrapper.completer();
 	    Meteor.startup(function () {
-	        browser_1.bootstrap(appComponentType, [].concat(angular2_meteor_1.METEOR_PROVIDERS, providers || []));
+	        browser_1.bootstrap(appComponentType, [].concat(angular2_meteor_1.METEOR_PROVIDERS, providers || []))
+	            .then(function () { return completer.resolve(); });
 	    });
+	    return completer.promise;
 	}
 	exports.bootstrap = bootstrap;
 	function MeteorApp(args) {
@@ -101,6 +105,12 @@
 /***/ function(module, exports) {
 
 	module.exports = require("angular2-meteor");
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	module.exports = require("angular2/src/facade/promise");
 
 /***/ }
 /******/ ])));
