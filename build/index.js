@@ -66,7 +66,7 @@
 	    var completer = promise_1.PromiseWrapper.completer();
 	    Meteor.startup(function () {
 	        browser_1.bootstrap(appComponentType, [].concat(angular2_meteor_1.METEOR_PROVIDERS, providers || []))
-	            .then(function () { return completer.resolve(); });
+	            .then(function (compRef) { return completer.resolve(compRef); });
 	    });
 	    return completer.promise;
 	}
