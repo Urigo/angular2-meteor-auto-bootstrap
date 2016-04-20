@@ -44,6 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
@@ -54,28 +55,20 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
 	var core_1 = __webpack_require__(2);
-	var mongo_cursor_differ_1 = __webpack_require__(3);
-	var bootstrap_1 = __webpack_require__(4);
-	var change_detection_1 = __webpack_require__(5);
-	function meteorProviders() {
-	    var providers = [];
-	    var factories = change_detection_1.defaultIterableDiffers.factories;
-	    if (factories) {
-	        factories.push(new mongo_cursor_differ_1.MongoCursorDifferFactory());
-	    }
-	    providers.push(core_1.provide(core_1.IterableDiffers, {
-	        useValue: new core_1.IterableDiffers(factories)
-	    }));
-	    return providers;
-	}
-	exports.METEOR_PROVIDERS = meteorProviders();
+	var browser_1 = __webpack_require__(3);
+	var angular2_meteor_1 = __webpack_require__(4);
+	var promise_1 = __webpack_require__(5);
 	// Bootstrap with Meteor providers.
 	function bootstrap(appComponentType, providers) {
 	    if (providers === void 0) { providers = null; }
+	    var completer = promise_1.PromiseWrapper.completer();
 	    Meteor.startup(function () {
-	        bootstrap_1.bootstrap(appComponentType, [].concat(exports.METEOR_PROVIDERS, providers || []));
+	        browser_1.bootstrap(appComponentType, [].concat(angular2_meteor_1.METEOR_PROVIDERS, providers || []))
+	            .then(function (compRef) { return completer.resolve(compRef); });
 	    });
+	    return completer.promise;
 	}
 	exports.bootstrap = bootstrap;
 	function MeteorApp(args) {
@@ -105,19 +98,19 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	module.exports = require("angular2-meteor/mongo_cursor_differ");
+	module.exports = require("angular2/platform/browser");
 
 /***/ },
 /* 4 */
 /***/ function(module, exports) {
 
-	module.exports = require("angular2/bootstrap");
+	module.exports = require("angular2-meteor");
 
 /***/ },
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = require("angular2/src/core/change_detection/change_detection");
+	module.exports = require("angular2/src/facade/promise");
 
 /***/ }
 /******/ ])));

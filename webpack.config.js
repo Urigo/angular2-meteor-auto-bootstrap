@@ -1,4 +1,5 @@
 var path = require('path');
+var ExternalsPlugin = require('webpack-externals-plugin');
 
 module.exports = {
   entry: {
@@ -7,19 +8,14 @@ module.exports = {
   output: {
     // We use CommonJS because of Meteor 1.3 specification that uses it
     libraryTarget: 'commonjs',
-    path: path.join(__dirname, "build"),
+    path: path.join(__dirname, "src"),
     filename: "[name].js"
   },
-  externals: [
-    {
-      // Angular files from the source code will be available from the NPM package
-      // No need to bundle them inside
-      'angular2-meteor/mongo_cursor_differ': 'angular2-meteor/mongo_cursor_differ',
-      'angular2/core': 'angular2/core',
-      'angular2/common': 'angular2/common',
-      'angular2/bootstrap': 'angular2/bootstrap',
-      'angular2/src/core/change_detection/change_detection': 'angular2/src/core/change_detection/change_detection'
-    }
+  plugins: [
+    new ExternalsPlugin({
+      type: 'commonjs',
+      include: __dirname + '/node_modules',
+    })
   ],
   resolve: {
     root: __dirname,
