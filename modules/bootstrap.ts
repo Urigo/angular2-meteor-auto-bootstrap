@@ -1,36 +1,28 @@
-import {provide, Type, Provider, IterableDiffers, Component, ComponentRef} from 'angular2/core';
-import {bootstrap as ng2Bootstrap} from 'angular2/platform/browser';
-import {defaultIterableDiffers} from 'angular2/src/core/change_detection/change_detection';
-import {METEOR_PROVIDERS} from 'angular2-meteor';
-import {PromiseWrapper, PromiseCompleter} from 'angular2/src/facade/promise';
+import {Type, Provider, Component, ComponentRef} from 'angular2/core';
+import {BROWSER_PROVIDERS} from 'angular2/src/platform/browser_common';
+import {BROWSER_APP_PROVIDERS} from 'angular2/platform/browser';
+import {MeteorApp as App, METEOR_PROVIDERS} from 'angular2-meteor';
 
 // Bootstrap with Meteor providers.
-export function bootstrap(appComponentType: any,
+export function bootstrap(component: any,
     providers: Array<Type | Provider | any[]> = null): Promise<ComponentRef> {
-  const completer: PromiseCompleter<any> = PromiseWrapper.completer();
-
-  Meteor.startup(() => {
-    ng2Bootstrap(appComponentType, [].concat(METEOR_PROVIDERS, providers || []))
-      .then((compRef) => completer.resolve(compRef));
-  });
-
-  return completer.promise;
+  return App.bootstrap(component, BROWSER_PROVIDERS,
+    [BROWSER_APP_PROVIDERS, METEOR_PROVIDERS], providers);
 }
 
 export function MeteorApp(args: any={}) {
   return function(cls) {
-    let annotations = Reflect.getMetadata('annotations', cls) || [];
-
-    if (!args.selector) args.selector = 'app';
-
-    // Create @Component.
-    annotations.push(new Component(args));
-
-    // Define metadata with added annotations.
-    Reflect.defineMetadata('annotations', annotations, cls);
 
     bootstrap(cls, args.providers);
 
     return cls;
   }
+}
+
+export function defineMetadata(cls: Type, args: any = {}) {
+  let annotations = Reflect.getMetadata('annotations', cls) || [];
+
+  annotations.push(new Component(args));
+
+  Reflect.defineMetadata('annotations', annotations, cls);
 }

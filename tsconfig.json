@@ -7,8 +7,10 @@
     "suppressImplicitAnyIndexErrors": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
-    "sourceMap": true,
-    "declaration": true
+    "sourceMap": false,
+    "declaration": true,
+    "outDir": "./build",
+    "rootDir": "./modules"
   },
   "filesGlob": [
     "modules/**/*.ts"

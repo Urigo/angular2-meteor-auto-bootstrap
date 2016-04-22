@@ -3,6 +3,7 @@ var webpack = require("gulp-webpack");
 var clean = require("gulp-clean");
 var runSequence = require("run-sequence");
 var gulpTypings = require("gulp-typings");
+var exec = require('child_process').exec;
 var git = require("gulp-git");
 var fs = require("fs");
  
@@ -14,28 +15,12 @@ gulp.task("typings",function(){
 });
 
 // Build TypeScript.
-gulp.task("webpack", function(callback) {
-  var build = gulp.src("modules/*")
-    .pipe(webpack(require("./webpack.config.js")))
-    .pipe(gulp.dest("build/"));
-
-  return build;
-});
-
-gulp.task("movedts", function(callback) {
-  var move = gulp.src("modules/*.d.ts")
-    .pipe(gulp.dest("build/"));
-
-  return move;
-});
-
 gulp.task("tsbuild", function(callback) {
-  return runSequence("webpack", "movedts", callback);
-});
-
-gulp.task("build-clean", function() {
-  return gulp.src("modules/*.d.ts")
-    .pipe(clean());
+  exec("tsc", function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    callback();
+  });
 });
 
 gulp.task("git-add", function(){
@@ -44,5 +29,5 @@ gulp.task("git-add", function(){
 });
 
 gulp.task("build", function(callback) {
-  runSequence("typings", "tsbuild", "build-clean", "git-add", callback);
+  runSequence("typings", "tsbuild", "git-add", callback);
 });
