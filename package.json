@@ -9,10 +9,10 @@
     "build": "gulp build"
   },
   "peerDependencies": {
-    "angular2": ">=2.0.0-beta.12"
+    "angular2": "^2.0.0-beta.16"
   },
   "devDependencies": {
-    "angular2": ">=2.0.0-beta.12",
+    "angular2": "^2.0.0-beta.16",
     "angular2-meteor": "^0.5.3",
     "es6-shim": "^0.35.0",
     "zone.js": "^0.6.10",
