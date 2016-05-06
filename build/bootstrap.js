@@ -1,12 +1,12 @@
 "use strict";
-var core_1 = require('angular2/core');
-var browser_common_1 = require('angular2/src/platform/browser_common');
-var browser_1 = require('angular2/platform/browser');
+var core_1 = require('@angular/core');
+var browser_common_1 = require('@angular/platform-browser/src/browser_common');
+var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
 var angular2_meteor_1 = require('angular2-meteor');
 // Bootstrap with Meteor providers.
 function bootstrap(component, providers) {
     if (providers === void 0) { providers = null; }
-    return angular2_meteor_1.MeteorApp.bootstrap(component, browser_common_1.BROWSER_PROVIDERS, [browser_1.BROWSER_APP_PROVIDERS, angular2_meteor_1.METEOR_PROVIDERS], providers);
+    return angular2_meteor_1.MeteorApp.bootstrap(component, browser_common_1.BROWSER_PROVIDERS, [platform_browser_dynamic_1.BROWSER_APP_DYNAMIC_PROVIDERS, angular2_meteor_1.METEOR_PROVIDERS], providers);
 }
 exports.bootstrap = bootstrap;
 function MeteorApp(args) {

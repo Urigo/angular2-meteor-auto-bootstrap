@@ -1,4 +1,5 @@
 node_modules
+.node_modules
 /*.ts
 npm-debug.log
 !webpack.config.js
