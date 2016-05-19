@@ -23,12 +23,12 @@ This package adds the `MongoCursorDifferFactory` into the defaults differs of An
 
 So in order to use this package, first make sure to install all the required dependecies:
 ````
-npm install angular2
+npm install @angular/core
 npm install angular2-meteor
 npm install angular2-meteor-auto-bootstrap
 ````
 
-And then import the `bootstrap` from THIS package (not from the angular2 package):
+And then import the `bootstrap` from THIS package:
 ````js
 import {bootstrap} from 'angular2-meteor-auto-bootstrap/bootstrap';
 ````
