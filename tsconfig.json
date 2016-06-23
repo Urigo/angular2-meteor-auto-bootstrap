@@ -12,6 +12,10 @@
     "outDir": "./build",
     "rootDir": "./modules"
   },
+  "files": [
+    "modules/index.ts",
+    "typings/main.d.ts"
+  ],
   "exclude": [
     "build",
     "node_modules"
