@@ -30,7 +30,7 @@ npm install angular2-meteor-auto-bootstrap
 
 And then import the `bootstrap` from THIS package:
 ````js
-import {bootstrap} from 'angular2-meteor-auto-bootstrap/bootstrap';
+import {bootstrap} from 'angular2-meteor-auto-bootstrap';
 ````
 
 And then just init it like any other Angular 2 application, using the `bootstrap` function:
