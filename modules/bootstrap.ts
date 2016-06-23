@@ -10,7 +10,7 @@ export function bootstrap(component: any,
     [BROWSER_APP_DYNAMIC_PROVIDERS, METEOR_PROVIDERS], providers);
 }
 
-export function MeteorApp(args: any={}) {
+export function MeteorApp(args: any = {}) {
   return function(cls) {
 
     bootstrap(cls, args.providers);
@@ -20,7 +20,7 @@ export function MeteorApp(args: any={}) {
 }
 
 export function defineMetadata(cls: Type, args: any = {}) {
-  let annotations = Reflect.getMetadata('annotations', cls) || [];
+  const annotations = Reflect.getMetadata('annotations', cls) || [];
 
   annotations.push(new Component(args));
 

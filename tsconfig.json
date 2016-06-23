@@ -1,28 +1,19 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
     "module": "commonjs",
     "target": "es5",
+    "moduleResolution": "node",
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
-    "moduleResolution": "node",
+    "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "declaration": true,
     "outDir": "./build",
     "rootDir": "./modules"
   },
-  "filesGlob": [
-    "modules/**/*.ts"
-  ],
-  "files": [
-    "modules/bootstrap.ts",
-    "modules/index.ts",
-    "typings/main.d.ts"
-  ],
   "exclude": [
-    "examples",
-    "node_modules",
-    "atmosphere-packages"
+    "build",
+    "node_modules"
   ]
 }
