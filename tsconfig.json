@@ -9,12 +9,12 @@
     "emitDecoratorMetadata": true,
     "sourceMap": true,
     "declaration": true,
-    "outDir": "./build",
+    "outDir": "./dist",
     "rootDir": "./modules"
   },
   "files": [
     "modules/index.ts",
-    "typings/main.d.ts"
+    "typings/main/index.d.ts"
   ],
   "exclude": [
     "build",
