@@ -1,28 +1,42 @@
-import {Type, Provider, Component, ComponentRef} from '@angular/core';
-import {BROWSER_APP_PROVIDERS, BROWSER_PLATFORM_PROVIDERS} from '@angular/platform-browser';
-import {BROWSER_APP_COMPILER_PROVIDERS} from '@angular/platform-browser-dynamic';
-import {MeteorApp as App, METEOR_PROVIDERS} from 'angular2-meteor';
+'use strict';
 
-// Bootstrap with Meteor providers.
-export function bootstrap(component: any,
-    providers: Array<Type | Provider | any[]> = null): Promise<ComponentRef<any>> {
-  return App.bootstrap(component, BROWSER_PLATFORM_PROVIDERS,
-    [BROWSER_APP_PROVIDERS, BROWSER_APP_COMPILER_PROVIDERS, METEOR_PROVIDERS], providers);
-}
+import {
+  ApplicationRef,
+  NgModule,
+  Type,
+  Provider,
+  Component,
+  ComponentRef
+} from '@angular/core';
 
-export function MeteorApp(args: any = {}) {
-  return function(cls) {
+import {BrowserModule} from '@angular/platform-browser';
 
-    bootstrap(cls, args.providers);
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
-    return cls;
-  }
-}
+import {MeteorModule} from 'angular2-meteor';
 
-export function defineMetadata(cls: Type, args: any = {}) {
-  const annotations = Reflect.getMetadata('annotations', cls) || [];
+@NgModule({
+  imports: [BrowserModule, MeteorModule]
+})
+export class AppModule { }
 
-  annotations.push(new Component(args));
+export function bootstrap(component: Type,
+    providers: Array<Type | Provider | any[]> = []): Promise<ComponentRef<any>> {
 
-  Reflect.defineMetadata('annotations', annotations, cls);
+  let args = {
+    imports: [BrowserModule, MeteorModule],
+    providers: providers,
+    declarations: [component],
+    bootstrap: [component]
+  };
+
+  let annotations = [new NgModule(args)];
+  Reflect.defineMetadata('annotations', annotations, AppModule);
+
+  return new Promise((resolve) => {
+    platformBrowserDynamic().bootstrapModule(AppModule).then(moduleRef => {
+      let appRef = moduleRef.injector.get(ApplicationRef);
+      resolve(appRef.components[0]);
+    });
+  });
 }

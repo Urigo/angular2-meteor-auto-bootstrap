@@ -19,11 +19,13 @@ export class MyComponent extends MeteorComponent {
 }
 ````
 
-This package adds the `MongoCursorDifferFactory` into the defaults differs of Angular 2 so you don't need to add it to each component you create.
+Bootstrapper for Angular2-Meteor apps.
 
-So in order to use this package, first make sure to install all the required dependecies:
+It adds behind the scene required Angular 2 and Meteor modules for the Angular 2 dynamic module bootstrapping.
+
+In order to use this package, first make sure to install all the required dependecies:
 ````
-npm install @angular/core
+npm install @angular/common
 npm install angular2-meteor
 npm install angular2-meteor-auto-bootstrap
 ````
