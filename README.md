@@ -1,27 +1,11 @@
 # angular2-meteor-auto-bootstrap
 
-This package handle the automatic bootstrap for Angular2-Meteor applications.
+Bootstrapper for the Angular2-Meteor apps.
 
-**Without** this package, your components should look like that: (with the `viewProviders` in each one of them)
-````js
-@Component({
-    selector: 'my-comp',
-    viewProviders: [
-        IterableDiffers.extend([new MongoCursorDifferFactory()])
-    ]
-})
-@View({
-    directives: [NgFor],
-    templateUrl: 'my-comp.html'
-})
-export class MyComponent extends MeteorComponent {
+Adds behind the scene required Angular 2 and Meteor modules for the Angular 2 dynamic module bootstrapping.
 
-}
-````
-
-Bootstrapper for Angular2-Meteor apps.
-
-It adds behind the scene required Angular 2 and Meteor modules for the Angular 2 dynamic module bootstrapping.
+> Please note that the recommended way for the bootstrapping since Angular 2 RC5 is to bootstrap an app module directly importing `MeteorModule`.
+> RC5 support is added for the compatibility with older versions mostly.
 
 In order to use this package, first make sure to install all the required dependecies:
 ````
@@ -48,5 +32,3 @@ export class Main { }
 
 bootstrap(Main);
 ````
-
-For more examples and working code, please refer to the `/examples/` folder in this repo.
