@@ -17,7 +17,7 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, angular2_meteor_1.MeteorModule]
+            imports: [platform_browser_1.BrowserModule]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
@@ -26,9 +26,10 @@ var AppModule = (function () {
 exports.AppModule = AppModule;
 function bootstrap(component, providers) {
     if (providers === void 0) { providers = []; }
+    providers = providers || [];
     var args = {
-        imports: [platform_browser_1.BrowserModule, angular2_meteor_1.MeteorModule],
-        providers: providers,
+        imports: [platform_browser_1.BrowserModule],
+        providers: [angular2_meteor_1.METEOR_PROVIDERS, providers],
         declarations: [component],
         bootstrap: [component]
     };

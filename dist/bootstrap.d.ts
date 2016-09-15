@@ -1,4 +1,4 @@
 import { Type, Provider, ComponentRef } from '@angular/core';
 export declare class AppModule {
 }
-export declare function bootstrap(component: Type, providers?: Array<Type | Provider | any[]>): Promise<ComponentRef<any>>;
+export declare function bootstrap(component: Type<any>, providers?: Array<Provider>): Promise<ComponentRef<any>>;

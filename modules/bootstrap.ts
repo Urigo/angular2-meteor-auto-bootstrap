@@ -13,19 +13,21 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
-import {MeteorModule} from 'angular2-meteor';
+import {METEOR_PROVIDERS} from 'angular2-meteor';
 
 @NgModule({
-  imports: [BrowserModule, MeteorModule]
+  imports: [BrowserModule]
 })
 export class AppModule { }
 
-export function bootstrap(component: Type,
-    providers: Array<Type | Provider | any[]> = []): Promise<ComponentRef<any>> {
+export function bootstrap(component: Type<any>,
+    providers: Array<Provider> = []): Promise<ComponentRef<any>> {
+
+  providers = providers || [];
 
   let args = {
-    imports: [BrowserModule, MeteorModule],
-    providers: providers,
+    imports: [BrowserModule],
+    providers: [METEOR_PROVIDERS, providers],
     declarations: [component],
     bootstrap: [component]
   };
