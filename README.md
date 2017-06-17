@@ -1,5 +1,7 @@
 # angular2-meteor-auto-bootstrap
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Urigo/angular2-meteor-auto-bootstrap.svg)](https://greenkeeper.io/)
+
 Bootstrapper for the Angular2-Meteor apps.
 
 Uses a class decorated with `NgModule` behind the scene with imported Angular 2 and Meteor modules to bootstrap a provided component dynamically.
